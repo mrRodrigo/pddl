@@ -1,0 +1,7 @@
+(define (problem sala)
+    (:domain salas)
+    (:objects Sala1 Sala2)
+    (:init (Em Sala1) (PortaAberta Sala1) (PortaAberta Sala2) (Sala Sala1) 
+           (Sala Sala2) (Conexao Sala1 Sala2) (Conexao Sala2 Sala1) (JanelasAbertas Sala2) )
+    (:goal  (and (Em Sala1) (PortaFechada Sala2) (JanelasFechadas Sala2) ))
+)
