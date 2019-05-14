@@ -1,6 +1,6 @@
 (define (domain salas)
     (:requirements :strips )
-    (:predicates (Em ?loc ) (Sala ?loc) (PortaAberta ?loc) (PortaFechada ?loc) (Conexao ?loc1 ?loc2 ) (JanelasFechadas ?loc) (JanelasAbertas ?loc))
+    (:predicates (Em ?loc ) (Sala ?loc) (PortaAberta ?loc) (PortaFechada ?loc) (Conexao ?loc1 ?loc2 ) (JanelasFechadas ?loc) (JanelasAbertas ?loc) (LuzesApagadas ?loc) (LuzesAcesas ?loc) )
     
     (:action Mover  :parameters (?loc1 ?loc2)
                     :precondition (and (Em ?loc1) (Sala ?loc1) (Sala ?loc2) (Conexao ?loc1 ?loc2 ) (PortaAberta ?loc2))
@@ -22,6 +22,9 @@
                     :effect (and (JanelasFechadas ?loc1) (not (JanelasAbertas ?loc1)))
     )
     
-
-   
+    (:action ApagaLuzes  :parameters (?loc1)
+                    :precondition (and (Em ?loc1) (Sala ?loc1) (JanelasAbertas ?loc1) (LuzesAcesas ?loc1)) 
+                    :effect (and (LuzesApagadas ?loc1) (not (LuzesAcesas ?loc1)))
+    )
+    
 )
